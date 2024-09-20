@@ -30,18 +30,25 @@
         }
 
         function selectRandomChild() {
-            const selectedChildren = Array.from(document.querySelectorAll('.child-box.selected')).map(box => box.textContent);
-            
-            if (selectedChildren.length === 0) {
-                resultDiv.textContent = 'Please select at least one child.';
-                return;
-            }
+    const selectedChildren = Array.from(document.querySelectorAll('.child-box.selected')).map(box => box.textContent);
+    
+    if (selectedChildren.length === 0) {
+        resultDiv.textContent = 'Please select at least one child.';
+        return;
+    }
 
-            const randomIndex = Math.floor(Math.random() * selectedChildren.length);
-            const selectedChild = selectedChildren[randomIndex];
-            
-            resultDiv.innerHTML = `<strong>${selectedChild}</strong>`;
-        }
+    // Clear the result and make it disappear for a brief moment
+    resultDiv.innerHTML = '';
+    
+    // Delay before showing the new result
+    setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * selectedChildren.length);
+        const selectedChild = selectedChildren[randomIndex];
+
+        resultDiv.innerHTML = `<strong>${selectedChild}</strong>`;
+    }, 500); // 500ms delay
+}
+
     </script>
 </body>
 </html>
