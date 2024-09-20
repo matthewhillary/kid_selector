@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     window.selectRandomChild = function () {
     const selectedChildren = Array.from(document.querySelectorAll('.child-box.selected')).map(box => box.textContent);
 
-    if (selectedChildren.length === 0) {
-    resultDiv.textContent = 'Please select at least one child.';
+    if (selectedChildren.length < 2) {
+    resultDiv.textContent = 'Please select at least two names.';
     return;
     }
 
