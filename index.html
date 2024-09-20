@@ -62,7 +62,6 @@
     </style>
 </head>
 <body>
-    <h1>Child Selector</h1>
     <div id="grid" class="grid-container"></div>
     <button onclick="selectRandomChild()">Choose at Random</button>
     <div id="result"></div>
@@ -96,7 +95,7 @@
             const randomIndex = Math.floor(Math.random() * selectedChildren.length);
             const selectedChild = selectedChildren[randomIndex];
             
-            resultDiv.innerHTML = `<strong>Selected Child:</strong><br>${selectedChild}`;
+            resultDiv.innerHTML = `<strong>${selectedChild}</strong>`;
         }
     </script>
 </body>
