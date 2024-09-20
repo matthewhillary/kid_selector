@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
     }
 
-        playSound(660, 0.3); // Play a longer, higher-pitched beep
+        playSound(660, 0.3); // Play a longer and higher-pitched beep
         
         const randomIndex = Math.floor(Math.random() * selectedChildren.length);
         const selectedChild = selectedChildren[randomIndex];
