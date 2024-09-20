@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .child-box {
+            background-color: #ffffff;
+            border: 2px solid #3498db;
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .child-box.selected {
+            background-color: #3498db;
+            color: white;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Child Selector</h1>
+    <div id="grid" class="grid-container"></div>
+    <button onclick="selectRandomChild()">Choose at Random</button>
+    <div id="result"></div>
+
+    <script>
+        const children = ['Bella', 'Zach', 'Lucia', 'George'];
+        const gridContainer = document.getElementById('grid');
+        const resultDiv = document.getElementById('result');
+
+        // Create child boxes
+        children.forEach(child => {
+            const box = document.createElement('div');
+            box.className = 'child-box';
+            box.textContent = child;
+            box.onclick = () => toggleSelection(box);
+            gridContainer.appendChild(box);
+        });
+
+        function toggleSelection(box) {
+            box.classList.toggle('selected');
+        }
+
+        function selectRandomChild() {
+            const selectedChildren = Array.from(document.querySelectorAll('.child-box.selected')).map(box => box.textContent);
+            
+            if (selectedChildren.length === 0) {
+                resultDiv.textContent = 'Please select at least one child.';
+                return;
+            }
+
+            const randomIndex = Math.floor(Math.random() * selectedChildren.length);
+            const selectedChild = selectedChildren[randomIndex];
+            
+            resultDiv.innerHTML = `<strong>Selected Child:</strong><br>${selectedChild}`;
+        }
+    </script>
+</body>
+</html>
